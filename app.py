@@ -2,9 +2,12 @@ import streamlit as st
 
 from os.path import join, isfile, dirname
 from os import listdir
+import numpy as np
 from keras.models import load_model
 from PIL import Image
+from skimage import transform
 from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.applications.vgg16 import preprocess_input
 
 #tagline
 #explain &links
@@ -50,10 +53,35 @@ for space, image, sign in zip(rows,images, signs):
 
 upload = st.file_uploader(label='Upload an Image',type=['jpg','png'])
 
+def max2(preds):
+    preds = list(preds)
+    maxi = max(preds)
+    idx1 = preds.index(maxi)
+
+    preds[idx1] = 0
+    maxi = max(preds)
+    idx2 = preds.index(maxi)
+
+    return idx1, idx2
 
 
 if upload:
-    #send image to model
-    st.image(upload)
-    #output prediction
+    ## send image to model
+    input = Image.open(upload)
+    input = img_to_array(input)
+    input = transform.resize(input, (220, 220, 3))
+    input = preprocess_input(input)
+    input = np.expand_dims(input, axis=0)
+    st.write(input.shape)
+    pred = best_model.predict(input)
+    ## output prediction
+    idx1, idx2 = max2(pred)
+    st.write(pred)
+    st.write(idx1, idx2)
+    st.write(signs[idx1], signs[idx2])
+    # Creates a dictionary matching predictions with species
+    predictions = dict(zip(signs, pred[0]))
+    st.write(predictions)
+
     pass
+#mistakes e[a],g[h],i[v], k[w], m[b],n[b].s[z],v[w], x[z]
