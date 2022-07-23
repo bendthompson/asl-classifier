@@ -1,0 +1,9 @@
+akash ASL Alphabet
+Train 87000 images, 200x200px, 3000 x 29 classes, A-Z,space,del,nothing
+test 29
+
+dan ASL Alphabet Test
+870 images, 200x200px, 30 x 29 classes
+
+ayush American Sign Language Dataset
+2520[1820], 70 x 36[26] classes, 0-9 [A-Z]
