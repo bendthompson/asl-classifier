@@ -2,7 +2,6 @@
 data/asl_alphabet_test_akash
 data/asl_alphabet_train_akash
 data/test_dan
-bestmodel.h5
 
 
 # Byte-compiled / optimized / DLL files
