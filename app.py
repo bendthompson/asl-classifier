@@ -54,13 +54,11 @@ for space, image, sign in zip(rows,images, signs):
 upload = st.file_uploader(label='Upload an Image',type=['jpg','png'])
 
 def max2(preds):
-    preds = list(preds)
-    maxi = max(preds)
-    idx1 = preds.index(maxi)
+    arr = preds.copy()
+    idx1 = arr.argmax()
+    arr[idx1] = 0
 
-    preds[idx1] = 0
-    maxi = max(preds)
-    idx2 = preds.index(maxi)
+    idx2 = arr.argmax()
 
     return idx1, idx2
 
@@ -72,16 +70,13 @@ if upload:
     input = transform.resize(input, (220, 220, 3))
     input = preprocess_input(input)
     input = np.expand_dims(input, axis=0)
-    st.write(input.shape)
     pred = best_model.predict(input)
     ## output prediction
-    idx1, idx2 = max2(pred)
+    idx1, idx2 = max2(pred[0])
     st.write(pred)
     st.write(idx1, idx2)
-    st.write(signs[idx1], signs[idx2])
-    # Creates a dictionary matching predictions with species
-    predictions = dict(zip(signs, pred[0]))
-    st.write(predictions)
+    st.write(f'Is it {signs[idx1]}? If not is it {signs[idx2]}?')
+
 
     pass
 #mistakes e[a],g[h],i[v], k[w], m[b],n[b].s[z],v[w], x[z]
