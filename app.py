@@ -79,4 +79,4 @@ if upload:
 
 
     pass
-#mistakes s[z],v[w], x[z]
+#mistakes  x[z]
