@@ -63,7 +63,7 @@ for space, image, sign in zip(cols,images, signs):
 
 if upload:
     with c[10]:
-        st.subheader('Prediction')
+        st.subheader('Result')
         st.image(Image.open(upload), width=100)
 
 
@@ -91,6 +91,7 @@ if upload:
     st.write(pred)
     st.write(idx1, idx2)
     st.write(f'Is it {signs[idx1]}? If not is it {signs[idx2]}?')
-
+    with c[10]:
+        st.subheader(signs[idx1])
 
     pass
