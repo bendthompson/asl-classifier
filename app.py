@@ -40,18 +40,33 @@ imgarrays = [img_to_array(img) for img in images]
 ## text info
 st.title("ASL Classifier👋")
 st.subheader("This is an app that classifies which American Sign Language alphabet sign is in an image using deep learning ")
-st.write("yo yo im ben")
+st.write("dataset w variety of images in different lightings and positions")
+st.write("I trained the model on a dataset from [Kaggle](https://www.kaggle.com/datasets/grassknoted/asl-alphabet). It has 87,000 images in 29 classes, with pictures taken in a range of lightings and positions, helping the model be robust at recognising signs in many contexts. ")
 
 ## display 29 images
-r1,r2 = st.columns(15),st.columns(15)
-rows = r1+r2
-for space, image, sign in zip(rows,images, signs):
+heads = st.columns([10,4])
+with heads[0]:
+    st.subheader('Example signs')
+with heads[1]:
+    st.subheader('Try it yourself')
+
+c= st.columns([1,1,1,1,1,1,1,1,1,1,4])
+cols = c[:10]+c[:10]+c[:10]
+with c[10]:
+    #st.subheader('Try it yourself')
+    upload = st.file_uploader(label='Drag and drop an example or upload your own',type=['jpg','png'])
+
+for space, image, sign in zip(cols,images, signs):
     with space:
         st.write(sign)
         st.image(image)
 
+if upload:
+    with c[10]:
+        st.subheader('Prediction')
+        st.image(Image.open(upload), width=100)
 
-upload = st.file_uploader(label='Upload an Image',type=['jpg','png'])
+
 
 def max2(preds):
     arr = preds.copy()
@@ -79,4 +94,3 @@ if upload:
 
 
     pass
-#mistakes  x[z]
