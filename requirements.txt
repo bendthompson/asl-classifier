@@ -14,9 +14,6 @@ tensorflow-cpu
 #frontend
 streamlit
 
-#scraping
-requests
-
 
 
 # utilities
