@@ -44,29 +44,22 @@ st.write("dataset w variety of images in different lightings and positions")
 st.write("I trained the model on a dataset from [Kaggle](https://www.kaggle.com/datasets/grassknoted/asl-alphabet). It has 87,000 images in 29 classes, with pictures taken in a range of lightings and positions, helping the model be robust at recognising signs in many contexts. ")
 
 ## display 29 images
-heads = st.columns([10,4])
-with heads[0]:
-    st.subheader('Example signs')
+heads = st.columns([4,10])
 with heads[1]:
+    st.subheader('Example signs')
+with heads[0]:
     st.subheader('Try it yourself')
 
-c= st.columns([1,1,1,1,1,1,1,1,1,1,4])
-cols = c[:10]+c[:10]+c[:10]
-with c[10]:
+c= st.columns([4,1,1,1,1,1,1,1,1,1,1])
+cols = c[1:]+c[1:]+c[1:]
+with c[0]:
     #st.subheader('Try it yourself')
     upload = st.file_uploader(label='Drag and drop an example or upload your own',type=['jpg','png'])
 
 for space, image, sign in zip(cols,images, signs):
     with space:
-        st.write(sign)
         st.image(image)
-
-if upload:
-    with c[10]:
-        st.subheader('Result')
-        st.image(Image.open(upload), width=100)
-
-
+        st.markdown(f"<h6 style='text-align: center; color: black;'>{sign} </h6>", unsafe_allow_html=True)
 
 def max2(preds):
     arr = preds.copy()
@@ -76,7 +69,6 @@ def max2(preds):
     idx2 = arr.argmax()
 
     return idx1, idx2
-
 
 if upload:
     ## send image to model
@@ -88,10 +80,13 @@ if upload:
     pred = best_model.predict(input)
     ## output prediction
     idx1, idx2 = max2(pred[0])
-    st.write(pred)
-    st.write(idx1, idx2)
-    st.write(f'Is it {signs[idx1]}? If not is it {signs[idx2]}?')
-    with c[10]:
-        st.subheader(signs[idx1])
+    with c[0]:
+        st.subheader('Result')
+        st.markdown(f'The result is **{signs[idx1]}**')
+        st.image(Image.open(upload), width=100)
+        st.markdown(f"But there's also a chance it could be... **{signs[idx2]}**")
+
+    #with c[10]:
+     #   st.subheader(signs[idx1])
 
     pass
