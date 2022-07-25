@@ -1,18 +1,6 @@
-# packaging
-pip>=9
-setuptools>=26
-twine
-wheel>=0.29
-
-# data science
 numpy
-scikit-image
-tensorflow-cpu
-
-
-#frontend
-streamlit
-
-
-
-# utilities
+Pillow==9.0.1
+scikit_image
+streamlit==1.3.1
+tensorflow==2.7.0
+matplotlib==3.5.1
