@@ -14,9 +14,14 @@ Try it! -[App website](https://asl-classifier-app.herokuapp.com/)
 
 ✌️👏 Added my own model architecture to pretrained layers from the VGG16 model
 
-🤟✋ Used data augmentation in Keras to improve the models ability to generalise
+🤟✋ Implemented data augmentation in Keras to improve the models ability to generalise
 
-🤙🤘 Used a range of Streamlit features to create a Heroku-hosted frontend where you can use the model on your own images
+🤙🤘 Used a Streamlit and Heroku to create a frontend where you can use the model on your own images
+
+
+## Example Images
+
+![image](https://user-images.githubusercontent.com/97390056/180932851-1bab8cef-9802-4c24-9db3-bcceb69b77ee.png)
 
 
 ## Model
@@ -44,8 +49,8 @@ My thinking was that with many similar looking signs (A&E, M&N, G&Z, etc.) it wo
 
 ## Sign Language Processing (SLP)
 
-SLP is a developing field of deep learning I have a personal interest in. 
-It's complex and still evolving, but mainly combines both Natural Language Processing and Computer Vision. 
+SLP is a complex and still evolving field of deep learning I have a personal interest in. 
+It mainly combines innovations from both Natural Language Processing and Computer Vision. 
 
 Classifying individual signs is very small step in the long process of SLP! 
 Sign language is much more than just a sequence of signs, 
