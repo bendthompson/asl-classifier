@@ -36,7 +36,7 @@ with heads[0]:
 with heads[1]:
     st.write('')
     st.subheader("This app uses deep learning to classify American Sign Language images")
-    st.markdown('**Built by Ben Thompson, learn more or connect with me on [github](https://github.com/bendthompson) and [linkedin](https://www.linkedin.com/in/ben-d-thompson/)**')
+    st.markdown('**Built by Ben Thompson- learn more or connect with me on [github](https://github.com/bendthompson) and [linkedin](https://www.linkedin.com/in/ben-d-thompson/)**')
 
 ## model&app information
 with st.expander('Information'):
